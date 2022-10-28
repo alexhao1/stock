@@ -9,9 +9,9 @@ class StockRepository(private val stockApi: StockApi) {
         SpannableString::class.java, StockApi.SpannableDeserializer()
     ).create()
 
-    fun getStocks():List<Stock>{
+    suspend fun getStocks():List<Stock>{
         var stocks = mutableListOf<Stock>()
-        getStocks()
+        stockApi.getStocks()
         //convert whatever is returned from json into a list of Stocks, which simply holds name and ticker strings
         return stocks
     }
