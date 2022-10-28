@@ -6,20 +6,25 @@
     app:startDestination="@+id/navigation_home">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="edu.utap.stocksleuth.ui.home.HomeFragment"
+        android:id="@+id/navigation_tweets"
+        android:name="edu.utap.stocksleuth.ui.tweets.TweetsFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_tweets" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="edu.utap.stocksleuth.ui.dashboard.DashboardFragment"
+        android:id="@+id/navigation_performance"
+        android:name="edu.utap.stocksleuth.ui.performance.PerformanceFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_performance" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="edu.utap.stocksleuth.ui.notifications.NotificationsFragment"
+        android:id="@+id/navigation_congress"
+        android:name="edu.utap.stocksleuth.ui.congress.CongressFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_congress" />
+    <fragment
+        android:id="@+id/navigation_stocks"
+        android:name="edu.utap.stocksleuth.ui.stockSelection.StockFragment"
+        android:label="Stocks"
+        tools:layout="@layout/fragment_stocks" />
 </navigation>
