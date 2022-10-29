@@ -1,0 +1,106 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="edu.utap.stocksleuth"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="27"
+8-->C:\Users\Alex Hao\AndroidStudioProjects\stock\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="32" />
+9-->C:\Users\Alex Hao\AndroidStudioProjects\stock\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->C:\Users\Alex Hao\AndroidStudioProjects\stock\app\src\main\AndroidManifest.xml:4:5-66
+11-->C:\Users\Alex Hao\AndroidStudioProjects\stock\app\src\main\AndroidManifest.xml:4:22-64
+12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+12-->C:\Users\Alex Hao\AndroidStudioProjects\stock\app\src\main\AndroidManifest.xml:5:5-78
+12-->C:\Users\Alex Hao\AndroidStudioProjects\stock\app\src\main\AndroidManifest.xml:5:22-76
+13
+14    <application
+14-->C:\Users\Alex Hao\AndroidStudioProjects\stock\app\src\main\AndroidManifest.xml:6:5-30:19
+15        android:allowBackup="true"
+15-->C:\Users\Alex Hao\AndroidStudioProjects\stock\app\src\main\AndroidManifest.xml:7:9-35
+16        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+16-->[androidx.core:core:1.8.0] C:\Users\Alex Hao\.gradle\caches\transforms-3\6a19de105318aab1da00cfa3c60fb56e\transformed\core-1.8.0\AndroidManifest.xml:24:18-86
+17        android:dataExtractionRules="@xml/data_extraction_rules"
+17-->C:\Users\Alex Hao\AndroidStudioProjects\stock\app\src\main\AndroidManifest.xml:8:9-65
+18        android:debuggable="true"
+19        android:extractNativeLibs="false"
+20        android:fullBackupContent="@xml/backup_rules"
+20-->C:\Users\Alex Hao\AndroidStudioProjects\stock\app\src\main\AndroidManifest.xml:9:9-54
+21        android:icon="@mipmap/ic_launcher"
+21-->C:\Users\Alex Hao\AndroidStudioProjects\stock\app\src\main\AndroidManifest.xml:10:9-43
+22        android:label="@string/app_name"
+22-->C:\Users\Alex Hao\AndroidStudioProjects\stock\app\src\main\AndroidManifest.xml:11:9-41
+23        android:roundIcon="@mipmap/ic_launcher_round"
+23-->C:\Users\Alex Hao\AndroidStudioProjects\stock\app\src\main\AndroidManifest.xml:12:9-54
+24        android:supportsRtl="true"
+24-->C:\Users\Alex Hao\AndroidStudioProjects\stock\app\src\main\AndroidManifest.xml:13:9-35
+25        android:testOnly="true"
+26        android:theme="@style/Theme.StockSleuth" >
+26-->C:\Users\Alex Hao\AndroidStudioProjects\stock\app\src\main\AndroidManifest.xml:14:9-49
+27        <activity
+27-->C:\Users\Alex Hao\AndroidStudioProjects\stock\app\src\main\AndroidManifest.xml:16:9-29:20
+28            android:name="edu.utap.stocksleuth.MainActivity"
+28-->C:\Users\Alex Hao\AndroidStudioProjects\stock\app\src\main\AndroidManifest.xml:17:13-41
+29            android:exported="true"
+29-->C:\Users\Alex Hao\AndroidStudioProjects\stock\app\src\main\AndroidManifest.xml:18:13-36
+30            android:label="@string/app_name" >
+30-->C:\Users\Alex Hao\AndroidStudioProjects\stock\app\src\main\AndroidManifest.xml:19:13-45
+31            <intent-filter>
+31-->C:\Users\Alex Hao\AndroidStudioProjects\stock\app\src\main\AndroidManifest.xml:20:13-24:29
+32                <action android:name="android.intent.action.MAIN" />
+32-->C:\Users\Alex Hao\AndroidStudioProjects\stock\app\src\main\AndroidManifest.xml:21:17-69
+32-->C:\Users\Alex Hao\AndroidStudioProjects\stock\app\src\main\AndroidManifest.xml:21:25-66
+33
+34                <category android:name="android.intent.category.LAUNCHER" />
+34-->C:\Users\Alex Hao\AndroidStudioProjects\stock\app\src\main\AndroidManifest.xml:23:17-77
+34-->C:\Users\Alex Hao\AndroidStudioProjects\stock\app\src\main\AndroidManifest.xml:23:27-74
+35            </intent-filter>
+36
+37            <meta-data
+37-->C:\Users\Alex Hao\AndroidStudioProjects\stock\app\src\main\AndroidManifest.xml:26:13-28:36
+38                android:name="android.app.lib_name"
+38-->C:\Users\Alex Hao\AndroidStudioProjects\stock\app\src\main\AndroidManifest.xml:27:17-52
+39                android:value="" />
+39-->C:\Users\Alex Hao\AndroidStudioProjects\stock\app\src\main\AndroidManifest.xml:28:17-33
+40        </activity>
+41
+42        <uses-library
+42-->[androidx.window:window:1.0.0] C:\Users\Alex Hao\.gradle\caches\transforms-3\59cc7bfaee96798b7702f2d6d4e8e0bd\transformed\window-1.0.0\AndroidManifest.xml:25:9-27:40
+43            android:name="androidx.window.extensions"
+43-->[androidx.window:window:1.0.0] C:\Users\Alex Hao\.gradle\caches\transforms-3\59cc7bfaee96798b7702f2d6d4e8e0bd\transformed\window-1.0.0\AndroidManifest.xml:26:13-54
+44            android:required="false" />
+44-->[androidx.window:window:1.0.0] C:\Users\Alex Hao\.gradle\caches\transforms-3\59cc7bfaee96798b7702f2d6d4e8e0bd\transformed\window-1.0.0\AndroidManifest.xml:27:13-37
+45        <uses-library
+45-->[androidx.window:window:1.0.0] C:\Users\Alex Hao\.gradle\caches\transforms-3\59cc7bfaee96798b7702f2d6d4e8e0bd\transformed\window-1.0.0\AndroidManifest.xml:28:9-30:40
+46            android:name="androidx.window.sidecar"
+46-->[androidx.window:window:1.0.0] C:\Users\Alex Hao\.gradle\caches\transforms-3\59cc7bfaee96798b7702f2d6d4e8e0bd\transformed\window-1.0.0\AndroidManifest.xml:29:13-51
+47            android:required="false" />
+47-->[androidx.window:window:1.0.0] C:\Users\Alex Hao\.gradle\caches\transforms-3\59cc7bfaee96798b7702f2d6d4e8e0bd\transformed\window-1.0.0\AndroidManifest.xml:30:13-37
+48
+49        <provider
+49-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Alex Hao\.gradle\caches\transforms-3\848773e611bbde5d3ec0ec3e63d01c98\transformed\emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+50            android:name="androidx.startup.InitializationProvider"
+50-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Alex Hao\.gradle\caches\transforms-3\848773e611bbde5d3ec0ec3e63d01c98\transformed\emoji2-1.2.0\AndroidManifest.xml:25:13-67
+51            android:authorities="edu.utap.stocksleuth.androidx-startup"
+51-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Alex Hao\.gradle\caches\transforms-3\848773e611bbde5d3ec0ec3e63d01c98\transformed\emoji2-1.2.0\AndroidManifest.xml:26:13-68
+52            android:exported="false" >
+52-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Alex Hao\.gradle\caches\transforms-3\848773e611bbde5d3ec0ec3e63d01c98\transformed\emoji2-1.2.0\AndroidManifest.xml:27:13-37
+53            <meta-data
+53-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Alex Hao\.gradle\caches\transforms-3\848773e611bbde5d3ec0ec3e63d01c98\transformed\emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+54                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+54-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Alex Hao\.gradle\caches\transforms-3\848773e611bbde5d3ec0ec3e63d01c98\transformed\emoji2-1.2.0\AndroidManifest.xml:30:17-75
+55                android:value="androidx.startup" />
+55-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Alex Hao\.gradle\caches\transforms-3\848773e611bbde5d3ec0ec3e63d01c98\transformed\emoji2-1.2.0\AndroidManifest.xml:31:17-49
+56            <meta-data
+56-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Alex Hao\.gradle\caches\transforms-3\a4f0fb44e9b56370f8c2ed23c9d5d030\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
+57                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+57-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Alex Hao\.gradle\caches\transforms-3\a4f0fb44e9b56370f8c2ed23c9d5d030\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
+58                android:value="androidx.startup" />
+58-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Alex Hao\.gradle\caches\transforms-3\a4f0fb44e9b56370f8c2ed23c9d5d030\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
+59        </provider>
+60    </application>
+61
+62</manifest>

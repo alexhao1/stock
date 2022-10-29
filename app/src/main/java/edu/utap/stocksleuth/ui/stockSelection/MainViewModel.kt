@@ -26,6 +26,11 @@ class MainViewModel: ViewModel() {
         }
         value = stockList.value
     }
+
+    fun searchPosts(s: String){
+        searchTerm.value = s
+    }
+
     private fun filterList(): List<Stock>{
         val searchTermValue = searchTerm.value!!
         return stockList.value?.filter {
@@ -39,9 +44,12 @@ class MainViewModel: ViewModel() {
         netStocksDone.value = false
         viewModelScope.launch(
             context = viewModelScope.coroutineContext + Dispatchers.IO) {
+//            stockList.postValue(repository.getStocks())
+//            liveStockList.postValue(repository.getStocks())
             stockList.postValue(repository.getStocks())
             liveStockList.postValue(repository.getStocks())
         }
+
         netStocksDone.value = true
     }
     fun observeStocks(): LiveData<List<Stock>> {

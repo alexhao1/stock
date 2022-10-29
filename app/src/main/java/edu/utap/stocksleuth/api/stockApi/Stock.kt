@@ -9,8 +9,8 @@ import androidx.core.text.clearSpans
 import com.google.gson.annotations.SerializedName
 
 data class Stock (
-    @SerializedName("name") //find actual name in json later
-    val key: String,
+    @SerializedName("figi") //find actual name in json later
+    val key: SpannableString,
     @SerializedName("description")
     val title: SpannableString,
     @SerializedName("displaySymbol")

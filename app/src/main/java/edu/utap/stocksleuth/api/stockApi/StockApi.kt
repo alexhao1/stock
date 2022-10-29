@@ -1,23 +1,31 @@
 package edu.utap.stocksleuth.api.stockApi
 
 import android.text.SpannableString
-import com.google.gson.GsonBuilder
-import java.lang.reflect.Type
-import com.google.gson.JsonDeserializationContext
-import com.google.gson.JsonDeserializer
-import com.google.gson.JsonElement
+import com.google.gson.*
+import com.google.gson.reflect.TypeToken
 import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.json.JSONArray
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import java.lang.reflect.Type
+
 
 interface StockApi {
 
-    @GET("/v1/stock/symbol?exchange=US&token=cd3m8ciad3ic2v61etl0cd3m8ciad3ic2v61etlg")
-    suspend fun getStocks(): ListingResponse
-    data class ListingResponse(val results: List<Stock>)
+    @GET("api/v1/stock/symbol?exchange=US&token=cd3m8ciad3ic2v61etl0cd3m8ciad3ic2v61etlg")
+    suspend fun getStocks(): List<Stock>
+
+
+
+
+
+
+//    class Response(val postArrayJson: JSONArray){
+//
+//    }
 
     class SpannableDeserializer : JsonDeserializer<SpannableString> {
         // @Throws(JsonParseException::class)
@@ -38,10 +46,10 @@ interface StockApi {
             return GsonConverterFactory.create(gsonBuilder.create())
         }
         // Keep the base URL simple
-        //private const val BASE_URL = "https://finnhub.io/api/v1/stock/symbol?exchange=US&token=cd3m8ciad3ic2v61etl0cd3m8ciad3ic2v61etlg"
+//        private const val BASE_URL = "https://finnhub.io/api/v1/stock/symbol?exchange=US&token=cd3m8ciad3ic2v61etl0cd3m8ciad3ic2v61etlg"
         var httpurl = HttpUrl.Builder()
             .scheme("https")
-            .host("www.finnhub.io/api") //find stock api
+            .host("www.finnhub.io") //find stock api
             .build()
         fun create(): StockApi = create(httpurl)
         private fun create(httpUrl: HttpUrl): StockApi {
