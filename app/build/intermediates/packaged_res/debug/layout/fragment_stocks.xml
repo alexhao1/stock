@@ -2,9 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.stockSelection.StockFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <EditText
         android:layout_width="match_parent"
@@ -12,7 +10,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:textSize="24dp"
-        android:id="@+id/search"/>
+        android:id="@+id/search"
+        android:hint="Search..."/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"

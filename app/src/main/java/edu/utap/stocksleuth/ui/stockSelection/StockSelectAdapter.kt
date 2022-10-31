@@ -37,7 +37,7 @@ class StockSelectAdapter(private val viewModel: MainViewModel,
     }
     class StockDiff :  DiffUtil.ItemCallback<Stock>(){
         override fun areItemsTheSame(oldItem: Stock, newItem: Stock): Boolean {
-            return oldItem.key == newItem.key
+            return oldItem.ticker == newItem.ticker
         }
         override fun areContentsTheSame(oldItem: Stock, newItem: Stock): Boolean {
             return Stock.spannableStringsEqual(oldItem.title, newItem.title) &&

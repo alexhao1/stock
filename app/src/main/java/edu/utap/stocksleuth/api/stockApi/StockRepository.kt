@@ -1,39 +1,33 @@
 package edu.utap.stocksleuth.api.stockApi
 
+import android.R
 import android.text.SpannableString
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import org.json.JSONArray
-import retrofit2.Call
-
+import org.json.JSONObject
+import java.io.*
 
 
 class StockRepository(private val stockApi: StockApi) {
-
     val gson = GsonBuilder().registerTypeAdapter(
         SpannableString::class.java, StockApi.SpannableDeserializer()
     ).create()
 
-//    private fun unpackStocks(response: StockApi.JSONArray): List<Stock>{
-//        var stocks = mutableListOf<Stock>()
-//        for(i in 0 until response.length()){
-//            val item = response.data.getJSONObject(i)
-//            stocks.add(Stock(item.figi, item.description, item.displaySymbol))
-//        }
-//        return stocks
-//    }
-    suspend fun getStocks():List<Stock>{
-//        var stocks = mutableListOf<Stock>()
-        return stockApi.getStocks()
+    fun getStocks():List<Stock>{
+    //        return stockApi.getStocks()
 
-//        var listResult : Array<Stock> = gson.fromJson(
-//            stockApi.getStocks(),
-//            Array<Stock> :: class.java
-//        )
-//
-//        stocks.addAll(listResult)
+        val jsonString = ListOfStocks
+        val jsonObj = JSONObject(jsonString)
 
-        //convert whatever is returned from json into a list of Stocks, which simply holds name and ticker strings
+        val jsonArray = jsonObj.optJSONArray("StockData")
+        var stocks = mutableListOf<Stock>()
 
+        for(i in 0 until jsonArray.length()){
+            val jsonObject = jsonArray.getJSONObject(i)
+            val name = SpannableString(jsonObject.optString("Description"))
+            val tick  = SpannableString(jsonObject.optString("Symbol"))
+            stocks.add(Stock(name,tick))
+        }
+        return stocks
     }
+
 }

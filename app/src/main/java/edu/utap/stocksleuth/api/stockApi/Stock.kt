@@ -9,11 +9,11 @@ import androidx.core.text.clearSpans
 import com.google.gson.annotations.SerializedName
 
 data class Stock (
-    @SerializedName("figi") //find actual name in json later
-    val key: SpannableString,
-    @SerializedName("description")
+//    @SerializedName("figi") //find actual name in json later
+//    val key: SpannableString,
+    @SerializedName("Description")
     val title: SpannableString,
-    @SerializedName("displaySymbol")
+    @SerializedName("Symbol")
     val ticker: SpannableString,
 
 )
@@ -73,7 +73,7 @@ data class Stock (
     }
     override fun equals(other: Any?) : Boolean =
         if (other is Stock) {
-            key == other.key
+            ticker == other.ticker
         } else {
             false
         }

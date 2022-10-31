@@ -12,11 +12,14 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import java.lang.reflect.Type
 
-
+//THIS FILE IS NOT USED BECAUSE I DECIDED TO HARDCODE THE JSON FOR STOCKS
+// SINCE THERE IS NO REALTIME CHANGES WITH STOCKS. THIS CAN BE USED AS REFERENCE FOR OTHER APIS
+//IN THIS PROJECT HOWEVER
 interface StockApi {
 
     @GET("api/v1/stock/symbol?exchange=US&token=cd3m8ciad3ic2v61etl0cd3m8ciad3ic2v61etlg")
     suspend fun getStocks(): List<Stock>
+
 
 
 
@@ -50,6 +53,7 @@ interface StockApi {
         var httpurl = HttpUrl.Builder()
             .scheme("https")
             .host("www.finnhub.io") //find stock api
+//            .host("api.polygon.io")
             .build()
         fun create(): StockApi = create(httpurl)
         private fun create(httpUrl: HttpUrl): StockApi {
