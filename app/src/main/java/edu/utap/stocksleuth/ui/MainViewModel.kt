@@ -1,4 +1,4 @@
-package edu.utap.stocksleuth.ui.stockSelection
+package edu.utap.stocksleuth.ui
 
 import androidx.lifecycle.*
 import edu.utap.stocksleuth.api.stockApi.Stock
@@ -17,7 +17,6 @@ class MainViewModel: ViewModel() {
     private val redditApi = StockApi.create()
     private val repository = StockRepository(redditApi)
     var netStocksDone : MutableLiveData<Boolean> = MutableLiveData(false)
-    var lookingAtFavs: Boolean = false
     var favStocks = mutableListOf<Stock>()
 
     private var liveStockList = MediatorLiveData<List<Stock>>().apply{
@@ -39,7 +38,9 @@ class MainViewModel: ViewModel() {
             found
         } ?: stockList.value!!
     }
-
+    fun setStock(s: Stock) {
+        stock.postValue(s)
+    }
     fun netStocks() {
         netStocksDone.value = false
         viewModelScope.launch(

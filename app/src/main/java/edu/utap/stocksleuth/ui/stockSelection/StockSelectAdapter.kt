@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import edu.utap.stocksleuth.api.stockApi.Stock
 import edu.utap.stocksleuth.databinding.RowStockBinding
+import edu.utap.stocksleuth.ui.MainViewModel
 
 class StockSelectAdapter(private val viewModel: MainViewModel,
                          private val fragmentActivity: FragmentActivity
@@ -19,6 +20,8 @@ class StockSelectAdapter(private val viewModel: MainViewModel,
                     init{
                         rowStockBinding.root.setOnClickListener{
                             //set stock selected to this stock
+                            viewModel.setStock(currentList[adapterPosition])
+
                         }
                     }
                 }

@@ -6,12 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import edu.utap.stocksleuth.databinding.FragmentTweetsBinding
+import edu.utap.stocksleuth.ui.MainViewModel
 
 class TweetsFragment : Fragment() {
 
     private var _binding: FragmentTweetsBinding? = null
+    val viewModel: MainViewModel by viewModels()
 
     // This property is only valid between onCreateView and
     // onDestroyView.

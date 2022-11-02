@@ -7,14 +7,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import edu.utap.stocksleuth.databinding.FragmentStocksBinding
+import edu.utap.stocksleuth.ui.MainViewModel
 
 class StockFragment: Fragment() {
     private val viewModel: MainViewModel by activityViewModels()
