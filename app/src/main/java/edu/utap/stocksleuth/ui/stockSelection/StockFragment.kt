@@ -34,9 +34,9 @@ class StockFragment: Fragment() {
         Log.d(javaClass.simpleName, "onViewCreated")
         binding.recyclerView.layoutManager = LinearLayoutManager(binding.recyclerView.context)
         binding.recyclerView.adapter = StockSelectAdapter(viewModel, this.requireActivity())
-        viewModel.netStocks()
 
         viewModel.observeStocks().observe(viewLifecycleOwner, Observer{
+            Log.d(javaClass.simpleName, "LOG: IS THIS REFRESHING?")
             (binding.recyclerView.adapter as StockSelectAdapter).submitList(it)
         })
 
@@ -50,8 +50,7 @@ class StockFragment: Fragment() {
                 viewModel.searchPosts(s.toString())
             }
         })
-
-
     }
+
 
 }

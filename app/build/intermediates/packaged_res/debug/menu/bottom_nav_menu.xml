@@ -4,6 +4,7 @@
         android:id="@+id/navigation_stocks"
         android:icon="@drawable/ic_baseline_attach_money_24"
         android:title="Stock List"/>
+
     <item
         android:id="@+id/navigation_tweets"
         android:icon="@drawable/ic_baseline_textsms_24"
