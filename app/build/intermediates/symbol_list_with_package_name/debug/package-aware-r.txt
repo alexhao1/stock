@@ -2675,6 +2675,7 @@ id action_menu_presenter
 id action_mode_bar
 id action_mode_bar_stub
 id action_mode_close_button
+id action_navigation_tweets_to_navigation_fav_stocks
 id action_text
 id actions
 id activity_chooser_view_content
@@ -2800,6 +2801,8 @@ id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
 id fade
+id favoriteRV
+id favorites
 id fill
 id fill_horizontal
 id fill_vertical
@@ -2930,6 +2933,7 @@ id navigation_bar_item_labels_group
 id navigation_bar_item_large_label_view
 id navigation_bar_item_small_label_view
 id navigation_congress
+id navigation_fav_stocks
 id navigation_header_container
 id navigation_performance
 id navigation_stocks
@@ -2996,6 +3000,7 @@ id search_bar
 id search_button
 id search_close_btn
 id search_edit_frame
+id search_favorite
 id search_go_btn
 id search_mag_icon
 id search_plate
@@ -3234,6 +3239,7 @@ layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout fragment_congress
+layout fragment_favorites
 layout fragment_performance
 layout fragment_stocks
 layout fragment_tweets
@@ -3315,6 +3321,7 @@ layout text_view_with_line_height_from_style
 layout text_view_with_theme_line_height
 layout text_view_without_line_height
 menu bottom_nav_menu
+menu favorite_menu
 mipmap ic_launcher
 mipmap ic_launcher_round
 navigation mobile_navigation
@@ -3385,6 +3392,7 @@ string google_api_key
 string google_app_id
 string google_crash_reporting_api_key
 string google_storage_bucket
+string hello_blank_fragment
 string hide_bottom_view_on_scroll_behavior
 string icon_content_description
 string item_view_role_description
