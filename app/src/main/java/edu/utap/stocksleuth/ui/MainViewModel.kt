@@ -4,6 +4,10 @@ import androidx.lifecycle.*
 import edu.utap.stocksleuth.api.stockApi.Stock
 import edu.utap.stocksleuth.api.stockApi.StockApi
 import edu.utap.stocksleuth.api.stockApi.StockRepository
+import edu.utap.stocksleuth.api.tweetApi.Tweet
+import edu.utap.stocksleuth.api.tweetApi.TweetApi
+import edu.utap.stocksleuth.api.tweetApi.TweetRepository
+import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -21,6 +25,22 @@ class MainViewModel: ViewModel() {
     var netStocksDone : MutableLiveData<Boolean> = MutableLiveData(false)
     var favStocks = mutableListOf<Stock>()
 
+    private var searchTermTweet = MutableLiveData<String>()
+    private var tweet = MutableLiveData<Tweet>()
+    private val tweetApi = TweetApi.create()
+    private var tweetList = MutableLiveData<List<Tweet>>()
+    private val tweetRepository = TweetRepository(tweetApi)
+    //    private val rawTweetData = MutableLiveData<Response<MultipleTweetPayload>>()
+    private val addlParams = mapOf<String,String>()
+
+    var netTweetsDone : MutableLiveData<Boolean> = MutableLiveData(false)
+    private var liveTweetsList = MediatorLiveData<List<Tweet>>().apply{
+        addSource(searchTermTweet){
+            value = filterTweetList()
+        }
+        value = tweetList.value
+    }
+
     private var liveStockList = MediatorLiveData<List<Stock>>().apply{
         addSource(searchTerm){
             value = filterList()
@@ -37,6 +57,7 @@ class MainViewModel: ViewModel() {
 
     init {
         netStocks()
+        netTweets()
     }
     fun searchPosts(s: String){
         searchTerm.value = s
@@ -71,6 +92,10 @@ class MainViewModel: ViewModel() {
     fun observeStocks(): LiveData<List<Stock>> {
         return liveStockList
     }
+    fun observeSelectedStock(): LiveData<Stock>{
+        return stock
+    }
+
 
     // FAVORITES
     private fun filterFav(): List<Stock>{
@@ -108,24 +133,37 @@ class MainViewModel: ViewModel() {
     fun setModifiedFav() {
         modifiedFav.value = modifiedFav.value?.plus(1)
     }
-    //FAVORITES stuff to be implemented later
-//    fun getFavoriteAt(position: Int) : RedditPost {
-//        return favPosts[position]
-//    }
-//
-//
-//    fun isFavorite(favPost: RedditPost): Boolean {
-//        return favPosts.contains(favPost)
-//    }
-//    fun addFavorite(favPost: RedditPost) {
-//        favPosts.add(favPost)
-//        favList.value = favPosts
-//    }
-//    fun removeFavorite(favPost: RedditPost) {
-//        favPosts.remove(favPost)
-//        favList.value = favPosts
-//    }
-//    fun getItemAt(position: Int) : RedditPost {
-//        return list.value!![position]
-//    }
+
+    //TWEETS
+    fun searchTweets(s: String){
+        searchTermTweet.value = s
+    }
+
+    private fun filterTweetList(): List<Tweet>{
+        val searchTermValue = searchTermTweet.value!!
+        return tweetList.value?.filter {
+            var found = false
+            found = found || it.searchFor(searchTermValue)
+            found
+        } ?: tweetList.value!!
+    }
+    fun netTweets() {
+        val coroutineExceptionHandler = CoroutineExceptionHandler{_, throwable ->
+            throwable.printStackTrace()
+        }
+
+        netTweetsDone.value = false
+        viewModelScope.launch(
+            context = viewModelScope.coroutineContext + Dispatchers.IO + coroutineExceptionHandler) {
+//            rawTweetData.postValue(_tweetLookup.getRecentTweets(stock.value!!.ticker.toString(),addlParams) as Response<MultipleTweetPayload>?)
+            tweetList.postValue(tweetRepository.getTweets(stock.value!!.ticker.toString()))
+            liveTweetsList.postValue(tweetRepository.getTweets(stock.value!!.ticker.toString()))
+        }
+
+        netTweetsDone.value = true
+    }
+
+    fun observeTweets(): LiveData<List<Tweet>> {
+        return liveTweetsList
+    }
 }

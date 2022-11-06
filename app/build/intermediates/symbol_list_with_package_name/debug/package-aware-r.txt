@@ -2546,6 +2546,7 @@ drawable googleg_standard_color_18
 drawable ic_baseline_account_balance_24
 drawable ic_baseline_area_chart_24
 drawable ic_baseline_attach_money_24
+drawable ic_baseline_loop_24
 drawable ic_baseline_textsms_24
 drawable ic_clock_black_24dp
 drawable ic_dashboard_black_24dp
@@ -2656,6 +2657,7 @@ id accessibility_custom_action_6
 id accessibility_custom_action_7
 id accessibility_custom_action_8
 id accessibility_custom_action_9
+id action
 id actionDown
 id actionDownUp
 id actionUp
@@ -2687,6 +2689,7 @@ id aligned
 id all
 id allStates
 id always
+id amount
 id androidx_window_activity_scope
 id animateToEnd
 id animateToStart
@@ -2695,6 +2698,7 @@ id anticipate
 id arc
 id asConfigured
 id async
+id author
 id auto
 id autoComplete
 id autoCompleteToEnd
@@ -2705,6 +2709,7 @@ id beginOnFirstDraw
 id beginning
 id bestChoice
 id blocking
+id bodyText
 id bottom
 id bounce
 id bounceBoth
@@ -2750,10 +2755,13 @@ id coordinator
 id cos
 id counterclockwise
 id currentState
+id currentViewing
 id custom
 id customPanel
 id cut
 id dark
+id date
+id dateTime
 id date_picker_actions
 id decelerate
 id decelerateAndComplete
@@ -2803,6 +2811,8 @@ id expanded_menu
 id fade
 id favoriteRV
 id favorites
+id favs
+id favsAmount
 id fill
 id fill_horizontal
 id fill_vertical
@@ -2975,6 +2985,8 @@ id radio
 id ratio
 id rectangles
 id recyclerView
+id retweets
+id retweetsAmount
 id reverseSawtooth
 id right
 id rightToLeft

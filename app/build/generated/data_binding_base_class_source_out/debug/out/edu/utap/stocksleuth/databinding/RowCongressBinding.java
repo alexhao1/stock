@@ -4,25 +4,50 @@ package edu.utap.stocksleuth.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.cardview.widget.CardView;
 import androidx.viewbinding.ViewBinding;
+import androidx.viewbinding.ViewBindings;
 import edu.utap.stocksleuth.R;
 import java.lang.NullPointerException;
 import java.lang.Override;
+import java.lang.String;
 
 public final class RowCongressBinding implements ViewBinding {
   @NonNull
-  private final ConstraintLayout rootView;
+  private final CardView rootView;
 
-  private RowCongressBinding(@NonNull ConstraintLayout rootView) {
+  @NonNull
+  public final TextView action;
+
+  @NonNull
+  public final TextView amount;
+
+  @NonNull
+  public final TextView date;
+
+  @NonNull
+  public final TextView name;
+
+  @NonNull
+  public final TextView ticker;
+
+  private RowCongressBinding(@NonNull CardView rootView, @NonNull TextView action,
+      @NonNull TextView amount, @NonNull TextView date, @NonNull TextView name,
+      @NonNull TextView ticker) {
     this.rootView = rootView;
+    this.action = action;
+    this.amount = amount;
+    this.date = date;
+    this.name = name;
+    this.ticker = ticker;
   }
 
   @Override
   @NonNull
-  public ConstraintLayout getRoot() {
+  public CardView getRoot() {
     return rootView;
   }
 
@@ -43,10 +68,43 @@ public final class RowCongressBinding implements ViewBinding {
 
   @NonNull
   public static RowCongressBinding bind(@NonNull View rootView) {
-    if (rootView == null) {
-      throw new NullPointerException("rootView");
-    }
+    // The body of this method is generated in a way you would not otherwise write.
+    // This is done to optimize the compiled bytecode for size and performance.
+    int id;
+    missingId: {
+      id = R.id.action;
+      TextView action = ViewBindings.findChildViewById(rootView, id);
+      if (action == null) {
+        break missingId;
+      }
 
-    return new RowCongressBinding((ConstraintLayout) rootView);
+      id = R.id.amount;
+      TextView amount = ViewBindings.findChildViewById(rootView, id);
+      if (amount == null) {
+        break missingId;
+      }
+
+      id = R.id.date;
+      TextView date = ViewBindings.findChildViewById(rootView, id);
+      if (date == null) {
+        break missingId;
+      }
+
+      id = R.id.name;
+      TextView name = ViewBindings.findChildViewById(rootView, id);
+      if (name == null) {
+        break missingId;
+      }
+
+      id = R.id.ticker;
+      TextView ticker = ViewBindings.findChildViewById(rootView, id);
+      if (ticker == null) {
+        break missingId;
+      }
+
+      return new RowCongressBinding((CardView) rootView, action, amount, date, name, ticker);
+    }
+    String missingId = rootView.getResources().getResourceName(id);
+    throw new NullPointerException("Missing required view with ID: ".concat(missingId));
   }
 }

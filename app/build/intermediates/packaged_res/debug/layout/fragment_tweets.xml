@@ -5,7 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.tweets.TweetsFragment">
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/currentViewing"
+        app:layout_constraintTop_toTopOf="parent"/>
     <TextView
         android:id="@+id/text_home"
         android:layout_width="match_parent"
@@ -19,5 +23,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="Please select a stock"/>
+        android:text=""/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="24dp"
+        android:id="@+id/search"
+        android:hint="Search..."/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/search"
+        android:scrollbars="vertical"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

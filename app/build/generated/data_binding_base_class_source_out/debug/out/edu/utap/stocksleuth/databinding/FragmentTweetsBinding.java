@@ -4,10 +4,12 @@ package edu.utap.stocksleuth.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import edu.utap.stocksleuth.R;
@@ -20,10 +22,24 @@ public final class FragmentTweetsBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
+  public final TextView currentViewing;
+
+  @NonNull
+  public final RecyclerView recyclerView;
+
+  @NonNull
+  public final EditText search;
+
+  @NonNull
   public final TextView textHome;
 
-  private FragmentTweetsBinding(@NonNull ConstraintLayout rootView, @NonNull TextView textHome) {
+  private FragmentTweetsBinding(@NonNull ConstraintLayout rootView,
+      @NonNull TextView currentViewing, @NonNull RecyclerView recyclerView,
+      @NonNull EditText search, @NonNull TextView textHome) {
     this.rootView = rootView;
+    this.currentViewing = currentViewing;
+    this.recyclerView = recyclerView;
+    this.search = search;
     this.textHome = textHome;
   }
 
@@ -54,13 +70,32 @@ public final class FragmentTweetsBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.currentViewing;
+      TextView currentViewing = ViewBindings.findChildViewById(rootView, id);
+      if (currentViewing == null) {
+        break missingId;
+      }
+
+      id = R.id.recyclerView;
+      RecyclerView recyclerView = ViewBindings.findChildViewById(rootView, id);
+      if (recyclerView == null) {
+        break missingId;
+      }
+
+      id = R.id.search;
+      EditText search = ViewBindings.findChildViewById(rootView, id);
+      if (search == null) {
+        break missingId;
+      }
+
       id = R.id.text_home;
       TextView textHome = ViewBindings.findChildViewById(rootView, id);
       if (textHome == null) {
         break missingId;
       }
 
-      return new FragmentTweetsBinding((ConstraintLayout) rootView, textHome);
+      return new FragmentTweetsBinding((ConstraintLayout) rootView, currentViewing, recyclerView,
+          search, textHome);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -23,16 +23,16 @@ class CongressFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val notificationsViewModel =
-            ViewModelProvider(this).get(CongressViewModel::class.java)
+//        val notificationsViewModel =
+//            ViewModelProvider(this).get(CongressViewModel::class.java) implement later
 
         _binding = FragmentCongressBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textNotifications
-        notificationsViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+//        notificationsViewModel.text.observe(viewLifecycleOwner) {
+////            textView.text = it implement later
+//        }
         return root
     }
 

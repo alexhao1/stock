@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import edu.utap.stocksleuth.R;
@@ -20,11 +21,15 @@ public final class FragmentCongressBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
+  public final RecyclerView recyclerView;
+
+  @NonNull
   public final TextView textNotifications;
 
   private FragmentCongressBinding(@NonNull ConstraintLayout rootView,
-      @NonNull TextView textNotifications) {
+      @NonNull RecyclerView recyclerView, @NonNull TextView textNotifications) {
     this.rootView = rootView;
+    this.recyclerView = recyclerView;
     this.textNotifications = textNotifications;
   }
 
@@ -55,13 +60,20 @@ public final class FragmentCongressBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.recyclerView;
+      RecyclerView recyclerView = ViewBindings.findChildViewById(rootView, id);
+      if (recyclerView == null) {
+        break missingId;
+      }
+
       id = R.id.text_notifications;
       TextView textNotifications = ViewBindings.findChildViewById(rootView, id);
       if (textNotifications == null) {
         break missingId;
       }
 
-      return new FragmentCongressBinding((ConstraintLayout) rootView, textNotifications);
+      return new FragmentCongressBinding((ConstraintLayout) rootView, recyclerView,
+          textNotifications);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

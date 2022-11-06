@@ -4,25 +4,59 @@ package edu.utap.stocksleuth.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.cardview.widget.CardView;
 import androidx.viewbinding.ViewBinding;
+import androidx.viewbinding.ViewBindings;
 import edu.utap.stocksleuth.R;
 import java.lang.NullPointerException;
 import java.lang.Override;
+import java.lang.String;
 
 public final class RowTweetBinding implements ViewBinding {
   @NonNull
-  private final ConstraintLayout rootView;
+  private final CardView rootView;
 
-  private RowTweetBinding(@NonNull ConstraintLayout rootView) {
+  @NonNull
+  public final TextView author;
+
+  @NonNull
+  public final TextView bodyText;
+
+  @NonNull
+  public final TextView dateTime;
+
+  @NonNull
+  public final ImageView favs;
+
+  @NonNull
+  public final TextView favsAmount;
+
+  @NonNull
+  public final ImageView retweets;
+
+  @NonNull
+  public final TextView retweetsAmount;
+
+  private RowTweetBinding(@NonNull CardView rootView, @NonNull TextView author,
+      @NonNull TextView bodyText, @NonNull TextView dateTime, @NonNull ImageView favs,
+      @NonNull TextView favsAmount, @NonNull ImageView retweets, @NonNull TextView retweetsAmount) {
     this.rootView = rootView;
+    this.author = author;
+    this.bodyText = bodyText;
+    this.dateTime = dateTime;
+    this.favs = favs;
+    this.favsAmount = favsAmount;
+    this.retweets = retweets;
+    this.retweetsAmount = retweetsAmount;
   }
 
   @Override
   @NonNull
-  public ConstraintLayout getRoot() {
+  public CardView getRoot() {
     return rootView;
   }
 
@@ -43,10 +77,56 @@ public final class RowTweetBinding implements ViewBinding {
 
   @NonNull
   public static RowTweetBinding bind(@NonNull View rootView) {
-    if (rootView == null) {
-      throw new NullPointerException("rootView");
-    }
+    // The body of this method is generated in a way you would not otherwise write.
+    // This is done to optimize the compiled bytecode for size and performance.
+    int id;
+    missingId: {
+      id = R.id.author;
+      TextView author = ViewBindings.findChildViewById(rootView, id);
+      if (author == null) {
+        break missingId;
+      }
 
-    return new RowTweetBinding((ConstraintLayout) rootView);
+      id = R.id.bodyText;
+      TextView bodyText = ViewBindings.findChildViewById(rootView, id);
+      if (bodyText == null) {
+        break missingId;
+      }
+
+      id = R.id.dateTime;
+      TextView dateTime = ViewBindings.findChildViewById(rootView, id);
+      if (dateTime == null) {
+        break missingId;
+      }
+
+      id = R.id.favs;
+      ImageView favs = ViewBindings.findChildViewById(rootView, id);
+      if (favs == null) {
+        break missingId;
+      }
+
+      id = R.id.favsAmount;
+      TextView favsAmount = ViewBindings.findChildViewById(rootView, id);
+      if (favsAmount == null) {
+        break missingId;
+      }
+
+      id = R.id.retweets;
+      ImageView retweets = ViewBindings.findChildViewById(rootView, id);
+      if (retweets == null) {
+        break missingId;
+      }
+
+      id = R.id.retweetsAmount;
+      TextView retweetsAmount = ViewBindings.findChildViewById(rootView, id);
+      if (retweetsAmount == null) {
+        break missingId;
+      }
+
+      return new RowTweetBinding((CardView) rootView, author, bodyText, dateTime, favs, favsAmount,
+          retweets, retweetsAmount);
+    }
+    String missingId = rootView.getResources().getResourceName(id);
+    throw new NullPointerException("Missing required view with ID: ".concat(missingId));
   }
 }
