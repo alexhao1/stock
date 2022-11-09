@@ -31,18 +31,13 @@ public final class RowCongressBinding implements ViewBinding {
   @NonNull
   public final TextView name;
 
-  @NonNull
-  public final TextView ticker;
-
   private RowCongressBinding(@NonNull CardView rootView, @NonNull TextView action,
-      @NonNull TextView amount, @NonNull TextView date, @NonNull TextView name,
-      @NonNull TextView ticker) {
+      @NonNull TextView amount, @NonNull TextView date, @NonNull TextView name) {
     this.rootView = rootView;
     this.action = action;
     this.amount = amount;
     this.date = date;
     this.name = name;
-    this.ticker = ticker;
   }
 
   @Override
@@ -96,13 +91,7 @@ public final class RowCongressBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.ticker;
-      TextView ticker = ViewBindings.findChildViewById(rootView, id);
-      if (ticker == null) {
-        break missingId;
-      }
-
-      return new RowCongressBinding((CardView) rootView, action, amount, date, name, ticker);
+      return new RowCongressBinding((CardView) rootView, action, amount, date, name);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

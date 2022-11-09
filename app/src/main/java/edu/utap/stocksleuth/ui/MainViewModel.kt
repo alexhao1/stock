@@ -1,6 +1,9 @@
 package edu.utap.stocksleuth.ui
 
 import androidx.lifecycle.*
+import edu.utap.stocksleuth.api.congressApi.Congress
+import edu.utap.stocksleuth.api.congressApi.CongressApi
+import edu.utap.stocksleuth.api.congressApi.CongressRepository
 import edu.utap.stocksleuth.api.stockApi.Stock
 import edu.utap.stocksleuth.api.stockApi.StockApi
 import edu.utap.stocksleuth.api.stockApi.StockRepository
@@ -20,8 +23,8 @@ class MainViewModel: ViewModel() {
     private var favList = MutableLiveData<List<Stock>>()
     private var modifiedFav: MutableLiveData<Int> = MutableLiveData(0)
 
-    private val redditApi = StockApi.create()
-    private val repository = StockRepository(redditApi)
+    private val stockApi = StockApi.create()
+    private val repository = StockRepository(stockApi)
     var netStocksDone : MutableLiveData<Boolean> = MutableLiveData(false)
     var favStocks = mutableListOf<Stock>()
 
@@ -30,8 +33,13 @@ class MainViewModel: ViewModel() {
     private val tweetApi = TweetApi.create()
     private var tweetList = MutableLiveData<List<Tweet>>()
     private val tweetRepository = TweetRepository(tweetApi)
-    //    private val rawTweetData = MutableLiveData<Response<MultipleTweetPayload>>()
     private val addlParams = mapOf<String,String>()
+
+    private var congress = MutableLiveData<Congress>()
+    private var congressApi = CongressApi.create()
+    private var congressList = MutableLiveData<List<Congress>>()
+    private val congressRepository = CongressRepository(congressApi)
+    var netCongressDone : MutableLiveData<Boolean> = MutableLiveData(false)
 
     var netTweetsDone : MutableLiveData<Boolean> = MutableLiveData(false)
     private var liveTweetsList = MediatorLiveData<List<Tweet>>().apply{
@@ -58,6 +66,7 @@ class MainViewModel: ViewModel() {
     init {
         netStocks()
         netTweets()
+        netCongress()
     }
     fun searchPosts(s: String){
         searchTerm.value = s
@@ -165,5 +174,22 @@ class MainViewModel: ViewModel() {
 
     fun observeTweets(): LiveData<List<Tweet>> {
         return liveTweetsList
+    }
+
+    fun netCongress(){
+        val coroutineExceptionHandler = CoroutineExceptionHandler{_, throwable ->
+            throwable.printStackTrace()
+        }
+        netCongressDone.value = false
+        viewModelScope.launch(
+            context = viewModelScope.coroutineContext + Dispatchers.IO + coroutineExceptionHandler) {
+            congressList.postValue(congressRepository.getCongress(stock.value!!.ticker.toString()))
+
+        }
+        netCongressDone.value = true
+    }
+
+    fun observeCongress(): LiveData<List<Congress>>{
+        return congressList
     }
 }
