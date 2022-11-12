@@ -23,7 +23,6 @@ drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_notifications_black_24dp
 id action
-id action_navigation_tweets_to_navigation_fav_stocks
 id amount
 id author
 id bodyText
@@ -40,7 +39,7 @@ id name
 id nav_host_fragment_activity_main
 id nav_view
 id navigation_congress
-id navigation_fav_stocks
+id navigation_favorites
 id navigation_performance
 id navigation_stocks
 id navigation_tweets

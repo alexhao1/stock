@@ -37,30 +37,10 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_performance, R.id.navigation_tweets, R.id.navigation_congress, R.id.navigation_stocks
+                R.id.navigation_performance, R.id.navigation_favorites, R.id.navigation_tweets, R.id.navigation_congress, R.id.navigation_stocks
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.favorite_menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        Log.d(javaClass.simpleName, "LOG: PRESSED")
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        val id = item.itemId
-        if (id == R.id.favorites) {
-            navController.navigate(R.id.navigation_fav_stocks)
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }

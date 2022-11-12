@@ -9,17 +9,14 @@
         android:id="@+id/navigation_tweets"
         android:name="edu.utap.stocksleuth.ui.tweets.TweetsFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_tweets" >
-        <action
-            android:id="@+id/action_navigation_tweets_to_navigation_fav_stocks"
-            app:destination="@id/navigation_fav_stocks" />
-    </fragment>
+        tools:layout="@layout/fragment_tweets" />
 
     <fragment
-        android:id="@+id/navigation_fav_stocks"
+        android:id="@+id/navigation_favorites"
         android:name="edu.utap.stocksleuth.ui.stockSelection.FavoriteFragment"
         android:label="Favorites"
         tools:layout="@layout/fragment_favorites" />
+
     <fragment
         android:id="@+id/navigation_performance"
         android:name="edu.utap.stocksleuth.ui.performance.PerformanceFragment"

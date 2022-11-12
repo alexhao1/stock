@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
+import android.util.Log
 import androidx.core.text.clearSpans
 
 import com.google.gson.annotations.SerializedName
@@ -59,17 +60,9 @@ data class Stock (
     fun searchFor(searchTerm: String): Boolean {
         // XXX Write me, search both regular posts and subreddit listings
         removeAllCurrentSpans()
-        if(title.contains(searchTerm)){
-            findAndSetSpan(title,searchTerm)
-            return true
-        }
-        if(ticker?.contains(searchTerm) == true){
-            findAndSetSpan(ticker,searchTerm)
-            return true
-        }
-        else {
-            return false
-        }
+        val foundTitle = findAndSetSpan(this.title, searchTerm)
+        val foundTicker = findAndSetSpan(this.ticker, searchTerm)
+        return foundTitle || foundTicker
     }
     override fun equals(other: Any?) : Boolean =
         if (other is Stock) {

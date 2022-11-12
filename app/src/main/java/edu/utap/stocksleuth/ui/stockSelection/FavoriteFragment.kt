@@ -1,6 +1,8 @@
 package edu.utap.stocksleuth.ui.stockSelection
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -37,6 +39,16 @@ class FavoriteFragment : Fragment() {
             }
         }
         binding.favoriteRV.adapter = adapter
+        binding.searchFavorite.addTextChangedListener(object: TextWatcher {
+            override fun afterTextChanged(s: Editable?) {}
+            override fun beforeTextChanged(
+                s: CharSequence?, start: Int, count: Int, after: Int
+            ) {}
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                viewModel.searchPosts(s.toString())
+            }
+        })
     }
 
 }

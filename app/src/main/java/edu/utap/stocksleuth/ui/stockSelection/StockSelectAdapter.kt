@@ -1,5 +1,7 @@
 package edu.utap.stocksleuth.ui.stockSelection
 
+import android.graphics.Color
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
@@ -15,14 +17,18 @@ class StockSelectAdapter(private val viewModel: MainViewModel,
                          private val fragmentActivity: FragmentActivity
 )
     : ListAdapter<Stock, StockSelectAdapter.VH>(StockDiff()) {
-
         inner class VH(val rowStockBinding: RowStockBinding):
                 RecyclerView.ViewHolder(rowStockBinding.root){
                     init{
+                        if (viewModel.isSelected() == -1) {
+                            viewModel.setStock((currentList[0]))
+                            viewModel.setSelected(0, currentList[0])
+                        }
                         rowStockBinding.root.setOnClickListener{
                             //set stock selected to this stock
                             viewModel.setStock(currentList[adapterPosition])
-
+                            viewModel.setSelected(adapterPosition, currentList[adapterPosition])
+                            notifyDataSetChanged()
                         }
                     }
                 }
@@ -35,7 +41,6 @@ class StockSelectAdapter(private val viewModel: MainViewModel,
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         val binding = holder.rowStockBinding
-
         binding.name.text = currentList[position].title
         binding.ticker.text = currentList[position].ticker
         binding.rowFav.setOnClickListener {
@@ -48,11 +53,18 @@ class StockSelectAdapter(private val viewModel: MainViewModel,
             viewModel.setModifiedFav()
             notifyItemChanged(position)
         }
+
         if (viewModel.isFavorite(currentList[position])) {
             binding.rowFav.setImageResource(R.drawable.ic_favorite_black_24dp)
         }
         else {
             binding.rowFav.setImageResource(R.drawable.ic_favorite_border_black_24dp)
+        }
+        if(viewModel.isStock(currentList[position])) {
+            holder.itemView.setBackgroundColor(Color.GRAY)
+        }
+        else {
+            holder.itemView.setBackgroundColor(Color.WHITE)
         }
     }
     class StockDiff :  DiffUtil.ItemCallback<Stock>(){

@@ -6,6 +6,11 @@
         android:title="Stock List"/>
 
     <item
+        android:id="@+id/navigation_favorites"
+        android:icon="@drawable/ic_favorite_black_24dp"
+        android:title="Favorites" />
+
+    <item
         android:id="@+id/navigation_tweets"
         android:icon="@drawable/ic_baseline_textsms_24"
         android:title="Tweets" />

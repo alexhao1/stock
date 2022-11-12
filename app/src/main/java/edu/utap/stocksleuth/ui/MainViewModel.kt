@@ -1,5 +1,7 @@
 package edu.utap.stocksleuth.ui
 
+import android.text.SpannableString
+import android.util.Log
 import androidx.lifecycle.*
 import edu.utap.stocksleuth.api.congressApi.Congress
 import edu.utap.stocksleuth.api.congressApi.CongressApi
@@ -86,6 +88,21 @@ class MainViewModel: ViewModel() {
     fun setStock(s: Stock) {
         stock.postValue(s)
     }
+
+    // Used to keep track of highlighted row in stock recyclerview
+    private var selected_row = -1
+    private var selected_stock: Stock = Stock(title = SpannableString("N/A"), ticker = SpannableString("N/A"))
+    fun isSelected() : Int {
+        return selected_row
+    }
+
+    fun isStock(stock: Stock) : Boolean {
+        return selected_stock.title.toString() == stock.title.toString() && selected_stock.ticker.toString() == stock.ticker.toString()
+    }
+    fun setSelected(position: Int, current_stock: Stock) {
+        selected_row = position
+        selected_stock = current_stock
+    }
     fun netStocks() {
         netStocksDone.value = false
         viewModelScope.launch(
@@ -113,7 +130,7 @@ class MainViewModel: ViewModel() {
             var found = false
             found = found || it.searchFor(searchTermValue)
             found
-        } ?: favList.value!!
+        } ?: listOf()
     }
 
     fun observeFav(): LiveData<List<Stock>> {
@@ -131,7 +148,11 @@ class MainViewModel: ViewModel() {
     }
 
     fun isFavorite(stock: Stock): Boolean {
-        return favStocks.contains(stock)
+        for (i in favStocks) {
+            if (i.title.toString() == stock.title.toString() && i.ticker.toString() == stock.ticker.toString())
+                return true
+        }
+        return false
     }
 
     fun removeFavorite(stock: Stock) {

@@ -36,7 +36,6 @@ class StockFragment: Fragment() {
         binding.recyclerView.adapter = StockSelectAdapter(viewModel, this.requireActivity())
 
         viewModel.observeStocks().observe(viewLifecycleOwner, Observer{
-            Log.d(javaClass.simpleName, "LOG: IS THIS REFRESHING?")
             (binding.recyclerView.adapter as StockSelectAdapter).submitList(it)
         })
 

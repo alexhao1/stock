@@ -2678,7 +2678,6 @@ id action_menu_presenter
 id action_mode_bar
 id action_mode_bar_stub
 id action_mode_close_button
-id action_navigation_tweets_to_navigation_fav_stocks
 id action_text
 id actions
 id activity_chooser_view_content
@@ -2944,7 +2943,7 @@ id navigation_bar_item_labels_group
 id navigation_bar_item_large_label_view
 id navigation_bar_item_small_label_view
 id navigation_congress
-id navigation_fav_stocks
+id navigation_favorites
 id navigation_header_container
 id navigation_performance
 id navigation_stocks

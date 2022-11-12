@@ -1,42 +1,38 @@
 [
     {
-        "merged": "C:\\Users\\Alex Hao\\.gradle\\daemon\\7.4\\edu.utap.stocksleuth.app-mergeDebugResources-50:\\layout\\row_tweet.xml",
-        "source": "C:\\Users\\Alex Hao\\.gradle\\daemon\\7.4\\edu.utap.stocksleuth.app-main-53:\\layout\\row_tweet.xml"
+        "merged": "edu.utap.stocksleuth.app-mergeDebugResources-50:/layout/row_stock.xml",
+        "source": "edu.utap.stocksleuth.app-main-53:/layout/row_stock.xml"
     },
     {
-        "merged": "C:\\Users\\Alex Hao\\.gradle\\daemon\\7.4\\edu.utap.stocksleuth.app-mergeDebugResources-50:\\layout\\activity_main.xml",
-        "source": "C:\\Users\\Alex Hao\\.gradle\\daemon\\7.4\\edu.utap.stocksleuth.app-main-53:\\layout\\activity_main.xml"
-    },
-    {
-        "merged": "C:\\Users\\Alex Hao\\.gradle\\daemon\\7.4\\edu.utap.stocksleuth.app-mergeDebugResources-50:\\layout\\fragment_tweets.xml",
-        "source": "C:\\Users\\Alex Hao\\.gradle\\daemon\\7.4\\edu.utap.stocksleuth.app-main-53:\\layout\\fragment_tweets.xml"
+        "merged": "edu.utap.stocksleuth.app-mergeDebugResources-50:/layout/row_tweet.xml",
+        "source": "edu.utap.stocksleuth.app-main-53:/layout/row_tweet.xml"
     },
     {
         "merged": "edu.utap.stocksleuth.app-mergeDebugResources-50:/layout/row_congress.xml",
         "source": "edu.utap.stocksleuth.app-main-53:/layout/row_congress.xml"
     },
     {
-        "merged": "C:\\Users\\Alex Hao\\.gradle\\daemon\\7.4\\edu.utap.stocksleuth.app-mergeDebugResources-50:\\layout\\row_stock.xml",
-        "source": "C:\\Users\\Alex Hao\\.gradle\\daemon\\7.4\\edu.utap.stocksleuth.app-main-53:\\layout\\row_stock.xml"
+        "merged": "edu.utap.stocksleuth.app-mergeDebugResources-50:/layout/fragment_favorites.xml",
+        "source": "edu.utap.stocksleuth.app-main-53:/layout/fragment_favorites.xml"
     },
     {
-        "merged": "C:\\Users\\Alex Hao\\.gradle\\daemon\\7.4\\edu.utap.stocksleuth.app-mergeDebugResources-50:\\layout\\fragment_stocks.xml",
-        "source": "C:\\Users\\Alex Hao\\.gradle\\daemon\\7.4\\edu.utap.stocksleuth.app-main-53:\\layout\\fragment_stocks.xml"
+        "merged": "edu.utap.stocksleuth.app-mergeDebugResources-50:/layout/fragment_stocks.xml",
+        "source": "edu.utap.stocksleuth.app-main-53:/layout/fragment_stocks.xml"
     },
     {
-        "merged": "C:\\Users\\Alex Hao\\.gradle\\daemon\\7.4\\edu.utap.stocksleuth.app-mergeDebugResources-50:\\layout\\fragment_performance.xml",
-        "source": "C:\\Users\\Alex Hao\\.gradle\\daemon\\7.4\\edu.utap.stocksleuth.app-main-53:\\layout\\fragment_performance.xml"
+        "merged": "edu.utap.stocksleuth.app-mergeDebugResources-50:/layout/activity_main.xml",
+        "source": "edu.utap.stocksleuth.app-main-53:/layout/activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\Alex Hao\\.gradle\\daemon\\7.4\\edu.utap.stocksleuth.app-mergeDebugResources-50:\\layout\\fragment_favorites.xml",
-        "source": "C:\\Users\\Alex Hao\\.gradle\\daemon\\7.4\\edu.utap.stocksleuth.app-main-53:\\layout\\fragment_favorites.xml"
+        "merged": "edu.utap.stocksleuth.app-mergeDebugResources-50:/layout/fragment_tweets.xml",
+        "source": "edu.utap.stocksleuth.app-main-53:/layout/fragment_tweets.xml"
     },
     {
-        "merged": "C:\\Users\\Alex Hao\\.gradle\\daemon\\7.4\\edu.utap.stocksleuth.app-mergeDebugResources-50:\\layout\\row_congress.xml",
-        "source": "C:\\Users\\Alex Hao\\.gradle\\daemon\\7.4\\edu.utap.stocksleuth.app-main-53:\\layout\\row_congress.xml"
+        "merged": "edu.utap.stocksleuth.app-mergeDebugResources-50:/layout/fragment_congress.xml",
+        "source": "edu.utap.stocksleuth.app-main-53:/layout/fragment_congress.xml"
     },
     {
-        "merged": "C:\\Users\\Alex Hao\\.gradle\\daemon\\7.4\\edu.utap.stocksleuth.app-mergeDebugResources-50:\\layout\\fragment_congress.xml",
-        "source": "C:\\Users\\Alex Hao\\.gradle\\daemon\\7.4\\edu.utap.stocksleuth.app-main-53:\\layout\\fragment_congress.xml"
+        "merged": "edu.utap.stocksleuth.app-mergeDebugResources-50:/layout/fragment_performance.xml",
+        "source": "edu.utap.stocksleuth.app-main-53:/layout/fragment_performance.xml"
     }
 ]
