@@ -26,6 +26,7 @@ id action
 id amount
 id author
 id bodyText
+id chart
 id container
 id currentViewing
 id date
@@ -49,10 +50,10 @@ id retweetsAmount
 id rowFav
 id search
 id search_favorite
-id text_dashboard
 id text_home
 id text_notifications
 id ticker
+id timeframe
 layout activity_main
 layout fragment_congress
 layout fragment_favorites

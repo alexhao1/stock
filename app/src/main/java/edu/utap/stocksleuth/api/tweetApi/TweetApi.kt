@@ -23,6 +23,7 @@ interface TweetApi {
     data class Statuses(val statuses: List<Tweet>)
 
 
+
     class SpannableDeserializer : JsonDeserializer<SpannableString> {
         // @Throws(JsonParseException::class)
         override fun deserialize(

@@ -2728,6 +2728,7 @@ id center_vertical
 id chain
 id chain2
 id chains
+id chart
 id checkbox
 id checked
 id chip
@@ -3086,7 +3087,6 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
-id text_dashboard
 id text_home
 id text_input_end_icon
 id text_input_error_icon
@@ -3100,6 +3100,7 @@ id textinput_prefix_text
 id textinput_suffix_text
 id ticker
 id time
+id timeframe
 id title
 id titleDividerNoCustom
 id title_template

@@ -3,6 +3,9 @@ plugins {
     id 'com.google.gms.google-services'
     id 'org.jetbrains.kotlin.android'
 }
+repositories {
+    maven { url 'https://jitpack.io' }
+}
 
 android {
     namespace 'edu.utap.stocksleuth'
@@ -61,4 +64,5 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.8.5'
     implementation 'com.fasterxml.jackson.core:jackson-core:2.8.5'
     implementation 'com.fasterxml.jackson.core:jackson-annotations:2.8.5'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 }

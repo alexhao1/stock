@@ -9,12 +9,16 @@ import edu.utap.stocksleuth.api.congressApi.CongressRepository
 import edu.utap.stocksleuth.api.stockApi.Stock
 import edu.utap.stocksleuth.api.stockApi.StockApi
 import edu.utap.stocksleuth.api.stockApi.StockRepository
+import edu.utap.stocksleuth.api.stockPerformanceApi.PerformanceApi
+import edu.utap.stocksleuth.api.stockPerformanceApi.PerformanceData
+import edu.utap.stocksleuth.api.stockPerformanceApi.PerformanceRepository
 import edu.utap.stocksleuth.api.tweetApi.Tweet
 import edu.utap.stocksleuth.api.tweetApi.TweetApi
 import edu.utap.stocksleuth.api.tweetApi.TweetRepository
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.*
 
 class MainViewModel: ViewModel() {
     private var title = MutableLiveData<String>()
@@ -31,17 +35,30 @@ class MainViewModel: ViewModel() {
     var favStocks = mutableListOf<Stock>()
 
     private var searchTermTweet = MutableLiveData<String>()
-    private var tweet = MutableLiveData<Tweet>()
     private val tweetApi = TweetApi.create()
     private var tweetList = MutableLiveData<List<Tweet>>()
     private val tweetRepository = TweetRepository(tweetApi)
-    private val addlParams = mapOf<String,String>()
 
-    private var congress = MutableLiveData<Congress>()
     private var congressApi = CongressApi.create()
     private var congressList = MutableLiveData<List<Congress>>()
     private val congressRepository = CongressRepository(congressApi)
     var netCongressDone : MutableLiveData<Boolean> = MutableLiveData(false)
+
+    private var timeSpan = "M"
+    private var timeResolution = "60"
+    private var performanceApi = PerformanceApi.create()
+    private var performanceList = MutableLiveData<PerformanceData>()
+    private val performanceRepository = PerformanceRepository(performanceApi)
+
+    private var toDate = System.currentTimeMillis()/1000
+    private val perfToken = "cd3m8ciad3ic2v61etl0cd3m8ciad3ic2v61etlg"
+    private val secondsInYear = 31540000
+    private val secondsInMonth = 2628000
+    private val secondsInWeek = 604800
+    private val secondsInDay = 86400
+    private val secondsInHour = 3600
+    private var fromDate = toDate-secondsInMonth
+
 
     var netTweetsDone : MutableLiveData<Boolean> = MutableLiveData(false)
     private var liveTweetsList = MediatorLiveData<List<Tweet>>().apply{
@@ -185,7 +202,6 @@ class MainViewModel: ViewModel() {
         netTweetsDone.value = false
         viewModelScope.launch(
             context = viewModelScope.coroutineContext + Dispatchers.IO + coroutineExceptionHandler) {
-//            rawTweetData.postValue(_tweetLookup.getRecentTweets(stock.value!!.ticker.toString(),addlParams) as Response<MultipleTweetPayload>?)
             tweetList.postValue(tweetRepository.getTweets(stock.value!!.ticker.toString()))
             liveTweetsList.postValue(tweetRepository.getTweets(stock.value!!.ticker.toString()))
         }
@@ -212,5 +228,57 @@ class MainViewModel: ViewModel() {
 
     fun observeCongress(): LiveData<List<Congress>>{
         return congressList
+    }
+
+    fun setTimeframe(level: String) {
+        timeSpan = when {
+            // Sanitize input
+            level == "H" -> "H"
+            level =="D" -> "D"
+            level =="W" -> "W"
+            level =="M" -> "M"
+            level == "Y" -> "Y"
+            else -> "M"
+
+        }
+        setTimeRes(timeSpan)
+    }
+    private fun setTimeRes(timeSpan: String){
+        timeResolution = when {
+            timeSpan == "H" -> "1"
+            timeSpan == "D" -> "15"
+            timeSpan == "W" -> "30"
+            timeSpan == "M" -> "60"
+            timeSpan == "Y" -> "D"
+            else -> "60"
+        }
+        setFromDate(timeSpan)
+    }
+    private fun setFromDate(timeSpan:String){
+        fromDate = when{
+            timeSpan == "H" -> toDate - secondsInHour
+            timeSpan == "D" -> toDate - secondsInDay
+            timeSpan == "W" -> toDate - secondsInWeek
+            timeSpan == "M" -> toDate - secondsInMonth
+            timeSpan == "Y" -> toDate - secondsInYear
+            else -> toDate - secondsInMonth
+        }
+    }
+
+    fun netPerformance(){
+        val coroutineExceptionHandler = CoroutineExceptionHandler{_, throwable ->
+            throwable.printStackTrace()
+        }
+        viewModelScope.launch(
+            context = viewModelScope.coroutineContext + Dispatchers.IO + coroutineExceptionHandler) {
+            performanceList.postValue(performanceRepository.getPerformance(stock.value!!.ticker.toString(),timeResolution,fromDate,toDate,perfToken))
+
+
+        }
+
+    }
+
+    fun observePerformance(): LiveData<PerformanceData>{
+        return performanceList
     }
 }
