@@ -1,6 +1,5 @@
 package edu.utap.stocksleuth.ui.performance
 
-import android.R
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -9,21 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import edu.utap.stocksleuth.api.stockPerformanceApi.PerformanceData
-import edu.utap.stocksleuth.databinding.FragmentCongressBinding
 import edu.utap.stocksleuth.databinding.FragmentPerformanceBinding
 import edu.utap.stocksleuth.ui.MainViewModel
-import edu.utap.stocksleuth.ui.congress.CongressAdapter
 import kotlin.math.roundToInt
 
 class PerformanceFragment : Fragment() {
@@ -50,19 +43,25 @@ class PerformanceFragment : Fragment() {
         viewModel.netPerformance()
         viewModel.observePerformance().observe(viewLifecycleOwner, Observer{
             //update chart
+            Log.d(javaClass.simpleName, "LOG: The initial data is ${it}")
             println("observing new performance")
-            binding.chart.data = setLineChartData(it)
-
+            // DO NOT simplfy this code. IDE assumes no null will be passed, but an empty
+            // PerformanceData can stil be passed, which is our equivalent of a null.
+            if (it.tickerData != null) {
+                binding.chart.data = setLineChartData(it)
+            }
+            else {
+                binding.chart.data = null
+            }
+            binding.chart.invalidate()
+            Log.d(javaClass.simpleName, "LOG: The data is ${binding.chart.data}")
         })
-
 
         val aa = ArrayAdapter(binding.root.context, android.R.layout.simple_spinner_item, timeframeList)
         // Set layout to use when the list of choices appear
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        binding.timeframe.onItemSelectedListener = object :
-            AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>,
-                                        view: View, position: Int, id: Long) {
+        binding.timeframe.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 Log.d("XXX", "pos $position")
                 println(timeframeList[position])
                 viewModel.setTimeframe(timeframeList[position])
@@ -86,31 +85,31 @@ class PerformanceFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
     fun setLineChartData(data: PerformanceData): LineData {
         println("UPDATING LINE CHART")
-        var values = ArrayList<Entry>()
-        var yData = data.tickerData
-        for(i in data.tickerData.indices){
-            values.add(Entry(i.toFloat(),yData[i].toFloat()))
+        Log.d(javaClass.simpleName, "LOG: Printing the updated chart list data ${data.toString()}")
+        val values = ArrayList<Entry>()
+        val yData = data.tickerData
+        for (i in data.tickerData.indices) {
+            values.add(Entry(i.toFloat(), yData[i].toFloat()))
         }
         val set = LineDataSet(values, viewModel.observeSelectedStock().value.toString())
 
-        var percentage = (data.tickerData[data.tickerData.size-1] - data.tickerData[0]) / data.tickerData[0]*100
-        var round = (100*percentage).roundToInt().toDouble() / 100
-        binding.chart.description.text = round.toString()+"%"
+        val percentage =
+            (data.tickerData[data.tickerData.size - 1] - data.tickerData[0]) / data.tickerData[0] * 100
+        val round = (100 * percentage).roundToInt().toDouble() / 100
+        binding.chart.description.text = round.toString() + "%"
         binding.chart.description.textSize = 20F
-        if(data.tickerData[0]<data.tickerData[data.tickerData.size-1]){
+        if (data.tickerData[0] < data.tickerData[data.tickerData.size - 1]) {
             set.color = Color.GREEN
             binding.chart.description.textColor = Color.GREEN
-        }
-        else{
+        } else {
             set.color = Color.RED
             binding.chart.description.textColor = Color.RED
         }
 
-        val dataSet = LineData(set)
-
-        return dataSet
+        return LineData(set)
     }
 
 }
