@@ -25,6 +25,7 @@ class PerformanceFragment : Fragment() {
     private var _binding: FragmentPerformanceBinding? = null
     private val binding get() = _binding!!
     val timeframeList = listOf("H","D","W","M","Y")
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -47,7 +48,16 @@ class PerformanceFragment : Fragment() {
             println("observing new performance")
             // DO NOT simplfy this code. IDE assumes no null will be passed, but an empty
             // PerformanceData can stil be passed, which is our equivalent of a null.
+            var xAxis = binding.chart.xAxis
+            if(viewModel.getTimeSpan()=="H"||viewModel.getTimeSpan()=="D") {
+                xAxis.valueFormatter = HourAxisFormatter()
+            }
+            else{
+                xAxis.valueFormatter = DateAxisFormatter()
+            }
+            xAxis.textSize = 7.5f
             if (it.tickerData != null) {
+
                 binding.chart.data = setLineChartData(it)
             }
             else {
@@ -77,8 +87,6 @@ class PerformanceFragment : Fragment() {
         val initialSpinner = 3
         binding.timeframe.setSelection(initialSpinner)
         viewModel.setTimeframe(timeframeList[initialSpinner])
-
-
     }
 
     override fun onDestroyView() {
@@ -91,10 +99,15 @@ class PerformanceFragment : Fragment() {
         Log.d(javaClass.simpleName, "LOG: Printing the updated chart list data ${data.toString()}")
         val values = ArrayList<Entry>()
         val yData = data.tickerData
+        val fromDate = viewModel.getStartDate()
+        val toDate = viewModel.getToDate()
+        val binSize = (toDate-fromDate)/yData.size
         for (i in data.tickerData.indices) {
-            values.add(Entry(i.toFloat(), yData[i].toFloat()))
+
+            values.add(Entry(((i*binSize)+fromDate).toFloat(), yData[i].toFloat()))
         }
         val set = LineDataSet(values, viewModel.observeSelectedStock().value.toString())
+
 
         val percentage =
             (data.tickerData[data.tickerData.size - 1] - data.tickerData[0]) / data.tickerData[0] * 100
@@ -111,5 +124,5 @@ class PerformanceFragment : Fragment() {
 
         return LineData(set)
     }
-
+    //x axis units: time for hour, time for day, days for week, days for month, months for yr
 }

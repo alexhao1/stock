@@ -38,6 +38,10 @@ const val ListOfStocks = """
    "Description": "Johnson & Johnson"
  },
  {
+   "Symbol": "SPY",
+   "Description": "S&P 500"
+ },
+ {
    "Symbol": "XOM",
    "Description": "Exxon Mobil Corp"
  },

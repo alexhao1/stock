@@ -15,16 +15,16 @@
 
         <TextView
             android:id="@+id/name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="1.85"
             android:layout_margin="10dp"
             android:textSize="16sp"
             />
 
         <TextView
             android:id="@+id/ticker"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_margin="10dp"
@@ -32,10 +32,10 @@
 
         <ImageView
             android:id="@+id/rowFav"
-            android:layout_width="24dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:layout_weight="1"
+            android:layout_weight=".5"
             android:src="@drawable/ic_favorite_border_black_24dp" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

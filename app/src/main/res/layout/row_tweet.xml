@@ -22,6 +22,7 @@
             android:id="@+id/author"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            android:textStyle="bold"
             />
         <TextView
             android:layout_width="wrap_content"
@@ -45,7 +46,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/favs"
-                android:layout_weight=".45"
+                android:layout_weight=".35"
                 android:background="@drawable/ic_favorite_black_24dp"/>
             <TextView
                 android:layout_width="0dp"
@@ -58,7 +59,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/retweets"
-                android:layout_weight=".45"
+                android:layout_weight=".35"
                 android:background="@drawable/ic_baseline_loop_24"/>
             <TextView
                 android:layout_width="0dp"

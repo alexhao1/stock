@@ -30,7 +30,7 @@ class TweetsAdapter(private val viewModel: MainViewModel,
     override fun onBindViewHolder(holder: TweetsAdapter.VH, position: Int) {
         val binding = holder.rowTweetBinding
 
-        binding.author.text = "@"+currentList[position].author.screenName
+        binding.author.text = "@"+currentList[position].author.screenName+"   "
         binding.dateTime.text = currentList[position].dateTime
         binding.bodyText.text = currentList[position].body
         binding.favsAmount.text = currentList[position].favorites.toString()

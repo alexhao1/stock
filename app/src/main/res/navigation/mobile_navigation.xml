@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/navigation_tweets"
         android:name="edu.utap.stocksleuth.ui.tweets.TweetsFragment"
-        android:label="@string/title_home"
+        android:label="Tweets"
         tools:layout="@layout/fragment_tweets" />
 
     <fragment
@@ -20,13 +20,13 @@
     <fragment
         android:id="@+id/navigation_performance"
         android:name="edu.utap.stocksleuth.ui.performance.PerformanceFragment"
-        android:label="@string/title_dashboard"
+        android:label="Performance"
         tools:layout="@layout/fragment_performance" />
 
     <fragment
         android:id="@+id/navigation_congress"
         android:name="edu.utap.stocksleuth.ui.congress.CongressFragment"
-        android:label="@string/title_notifications"
+        android:label="Government Trading"
         tools:layout="@layout/fragment_congress" />
     <fragment
         android:id="@+id/navigation_stocks"

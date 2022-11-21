@@ -254,6 +254,9 @@ class MainViewModel: ViewModel() {
         }
         setFromDate(timeSpan)
     }
+
+
+
     private fun setFromDate(timeSpan:String){
         fromDate = when{
             timeSpan == "H" -> toDate - secondsInHour
@@ -277,8 +280,23 @@ class MainViewModel: ViewModel() {
         }
 
     }
+    fun netPerformanceWeekend(){
+        //TODO
+    }
+    fun netPerformanceAfterHrs(){
+        //TODO
+    }
 
     fun observePerformance(): LiveData<PerformanceData>{
         return performanceList
+    }
+    fun getStartDate(): Long{
+        return fromDate
+    }
+    fun getToDate():Long{
+        return toDate
+    }
+    fun getTimeSpan(): String{
+        return timeSpan
     }
 }
