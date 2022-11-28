@@ -6,7 +6,6 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import edu.utap.stocksleuth.api.stockApi.Stock
 import edu.utap.stocksleuth.api.tweetApi.Tweet
 import edu.utap.stocksleuth.databinding.RowTweetBinding
 import edu.utap.stocksleuth.ui.MainViewModel

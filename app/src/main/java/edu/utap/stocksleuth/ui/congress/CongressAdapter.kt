@@ -3,19 +3,13 @@ package edu.utap.stocksleuth.ui.congress
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.getColor
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import edu.utap.stocksleuth.R
 import edu.utap.stocksleuth.api.congressApi.Congress
-import edu.utap.stocksleuth.api.stockApi.Stock
 import edu.utap.stocksleuth.databinding.RowCongressBinding
-import edu.utap.stocksleuth.databinding.RowStockBinding
 import edu.utap.stocksleuth.ui.MainViewModel
-import edu.utap.stocksleuth.ui.stockSelection.StockSelectAdapter
 
 class CongressAdapter(private val viewModel: MainViewModel,
                       private val fragmentActivity: FragmentActivity
