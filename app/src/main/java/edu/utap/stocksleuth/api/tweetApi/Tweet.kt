@@ -7,8 +7,6 @@ import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import androidx.core.text.clearSpans
 import com.google.gson.annotations.SerializedName
-import edu.utap.stocksleuth.api.stockApi.Stock
-import org.json.JSONObject
 
 data class Tweet(
 

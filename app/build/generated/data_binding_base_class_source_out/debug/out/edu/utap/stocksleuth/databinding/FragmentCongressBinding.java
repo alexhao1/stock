@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import edu.utap.stocksleuth.R;
@@ -24,12 +25,17 @@ public final class FragmentCongressBinding implements ViewBinding {
   public final RecyclerView recyclerView;
 
   @NonNull
+  public final SwipeRefreshLayout swipeContainer;
+
+  @NonNull
   public final TextView textNotifications;
 
   private FragmentCongressBinding(@NonNull ConstraintLayout rootView,
-      @NonNull RecyclerView recyclerView, @NonNull TextView textNotifications) {
+      @NonNull RecyclerView recyclerView, @NonNull SwipeRefreshLayout swipeContainer,
+      @NonNull TextView textNotifications) {
     this.rootView = rootView;
     this.recyclerView = recyclerView;
+    this.swipeContainer = swipeContainer;
     this.textNotifications = textNotifications;
   }
 
@@ -66,13 +72,19 @@ public final class FragmentCongressBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.swipeContainer;
+      SwipeRefreshLayout swipeContainer = ViewBindings.findChildViewById(rootView, id);
+      if (swipeContainer == null) {
+        break missingId;
+      }
+
       id = R.id.text_notifications;
       TextView textNotifications = ViewBindings.findChildViewById(rootView, id);
       if (textNotifications == null) {
         break missingId;
       }
 
-      return new FragmentCongressBinding((ConstraintLayout) rootView, recyclerView,
+      return new FragmentCongressBinding((ConstraintLayout) rootView, recyclerView, swipeContainer,
           textNotifications);
     }
     String missingId = rootView.getResources().getResourceName(id);

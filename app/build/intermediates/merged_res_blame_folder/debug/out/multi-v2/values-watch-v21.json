@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "edu.utap.stocksleuth.app-mergeDebugResources-49:/values-watch-v21/values-watch-v21.xml",
+            "outputFile": "edu.utap.stocksleuth.app-mergeDebugResources-50:/values-watch-v21/values-watch-v21.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Alex Hao\\.gradle\\caches\\transforms-3\\80e2ddf255aa85ed44e7ed55096608a4\\transformed\\appcompat-1.5.1\\res\\values-watch-v21\\values-watch-v21.xml",
+                    "source": "C:\\Users\\mew41\\.gradle\\caches\\transforms-3\\80e2ddf255aa85ed44e7ed55096608a4\\transformed\\appcompat-1.5.1\\res\\values-watch-v21\\values-watch-v21.xml",
                     "from": {
                         "startLines": "2,6,10",
                         "startColumns": "4,4,4",

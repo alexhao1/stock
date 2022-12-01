@@ -2,7 +2,6 @@ package edu.utap.stocksleuth.api.tweetApi
 
 import android.text.SpannableString
 import com.google.gson.GsonBuilder
-import edu.utap.stocksleuth.ui.MainViewModel
 
 //import com.tycz.tweedle.lib.api.Response
 //import com.tycz.tweedle.lib.dtos.tweet.MultipleTweetPayload

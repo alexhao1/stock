@@ -7,11 +7,9 @@ import com.google.gson.JsonDeserializer
 import com.google.gson.JsonElement
 import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 import java.lang.reflect.Type
 

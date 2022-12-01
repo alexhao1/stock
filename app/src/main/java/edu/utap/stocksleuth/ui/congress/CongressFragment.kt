@@ -1,22 +1,16 @@
 package edu.utap.stocksleuth.ui.congress
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import edu.utap.stocksleuth.databinding.FragmentCongressBinding
-import edu.utap.stocksleuth.databinding.FragmentStocksBinding
 import edu.utap.stocksleuth.ui.MainViewModel
-import edu.utap.stocksleuth.ui.stockSelection.StockSelectAdapter
 
 
 class CongressFragment : Fragment() {
@@ -43,6 +37,14 @@ class CongressFragment : Fragment() {
         viewModel.observeCongress().observe(viewLifecycleOwner, Observer{
             (binding.recyclerView.adapter as CongressAdapter).submitList(it)
         })
+        val swipe = binding.swipeContainer
+        swipe.setOnRefreshListener {
+            Log.d(javaClass.simpleName, "LOG: Refreshing now")
+            viewModel.netCongressDone
+            swipe.isRefreshing = viewModel.netCongressDone.value == false
+            Log.d(javaClass.simpleName, "LOG: Finished refreshing")
+
+        }
 
 
 

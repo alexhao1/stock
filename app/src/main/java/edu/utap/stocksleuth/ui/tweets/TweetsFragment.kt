@@ -38,7 +38,14 @@ class TweetsFragment : Fragment() {
         Log.d(javaClass.simpleName, "onViewCreatedTweets, current stock: "+viewModel.observeSelectedStock().value?.ticker.toString())
         binding.recyclerView.layoutManager = LinearLayoutManager(binding.recyclerView.context)
         binding.recyclerView.adapter = TweetsAdapter(viewModel, this.requireActivity())
+        val swipe = binding.swipeContainer
+        swipe.setOnRefreshListener {
+            Log.d(javaClass.simpleName, "LOG: Refreshing now")
+            viewModel.netTweets()
+            swipe.isRefreshing = viewModel.netTweetsDone.value == false
+            Log.d(javaClass.simpleName, "LOG: Finished refreshing")
 
+        }
         viewModel.observeSelectedStock().observe(viewLifecycleOwner,Observer {
             println("observing changed stock")
             viewModel.netTweets()
@@ -46,7 +53,7 @@ class TweetsFragment : Fragment() {
 
 
         viewModel.observeTweets().observe(viewLifecycleOwner, Observer{
-            println("observing new tweets from "+ viewModel.observeSelectedStock().value?.ticker.toString())
+            println("LOG: observing new tweets from "+ viewModel.observeSelectedStock().value?.ticker.toString())
             (binding.recyclerView.adapter as TweetsAdapter).submitList(it)
         })
         //search

@@ -1,13 +1,7 @@
 package edu.utap.stocksleuth.api.stockApi
 
-import android.R
 import android.text.SpannableString
-import com.google.gson.GsonBuilder
 import org.json.JSONObject
-import java.io.*
-import edu.utap.stocksleuth.api.congressApi.Congress
-import edu.utap.stocksleuth.api.stockApi.Stock
-import edu.utap.stocksleuth.api.tweetApi.TweetApi
 
 
 class StockRepository() {

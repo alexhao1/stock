@@ -50,6 +50,7 @@ id retweetsAmount
 id rowFav
 id search
 id search_favorite
+id swipeContainer
 id text_home
 id text_notifications
 id ticker

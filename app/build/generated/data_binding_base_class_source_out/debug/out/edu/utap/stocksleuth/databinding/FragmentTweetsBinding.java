@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import edu.utap.stocksleuth.R;
@@ -31,15 +32,20 @@ public final class FragmentTweetsBinding implements ViewBinding {
   public final EditText search;
 
   @NonNull
+  public final SwipeRefreshLayout swipeContainer;
+
+  @NonNull
   public final TextView textHome;
 
   private FragmentTweetsBinding(@NonNull ConstraintLayout rootView,
       @NonNull TextView currentViewing, @NonNull RecyclerView recyclerView,
-      @NonNull EditText search, @NonNull TextView textHome) {
+      @NonNull EditText search, @NonNull SwipeRefreshLayout swipeContainer,
+      @NonNull TextView textHome) {
     this.rootView = rootView;
     this.currentViewing = currentViewing;
     this.recyclerView = recyclerView;
     this.search = search;
+    this.swipeContainer = swipeContainer;
     this.textHome = textHome;
   }
 
@@ -88,6 +94,12 @@ public final class FragmentTweetsBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.swipeContainer;
+      SwipeRefreshLayout swipeContainer = ViewBindings.findChildViewById(rootView, id);
+      if (swipeContainer == null) {
+        break missingId;
+      }
+
       id = R.id.text_home;
       TextView textHome = ViewBindings.findChildViewById(rootView, id);
       if (textHome == null) {
@@ -95,7 +107,7 @@ public final class FragmentTweetsBinding implements ViewBinding {
       }
 
       return new FragmentTweetsBinding((ConstraintLayout) rootView, currentViewing, recyclerView,
-          search, textHome);
+          search, swipeContainer, textHome);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
