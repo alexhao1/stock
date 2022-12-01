@@ -6,7 +6,7 @@ import edu.utap.stocksleuth.api.congressApi.Congress
 import edu.utap.stocksleuth.api.congressApi.CongressApi
 import edu.utap.stocksleuth.api.congressApi.CongressRepository
 import edu.utap.stocksleuth.api.stockApi.Stock
-import edu.utap.stocksleuth.api.stockApi.StockApi
+
 import edu.utap.stocksleuth.api.stockApi.StockRepository
 import edu.utap.stocksleuth.api.stockPerformanceApi.PerformanceApi
 import edu.utap.stocksleuth.api.stockPerformanceApi.PerformanceData
@@ -27,8 +27,8 @@ class MainViewModel: ViewModel() {
     private var favList = MutableLiveData<List<Stock>>()
     private var modifiedFav: MutableLiveData<Int> = MutableLiveData(0)
 
-    private val stockApi = StockApi.create()
-    private val repository = StockRepository(stockApi)
+
+    private val repository = StockRepository()
     var netStocksDone : MutableLiveData<Boolean> = MutableLiveData(false)
     var favStocks = mutableListOf<Stock>()
 

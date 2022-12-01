@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -61,6 +62,8 @@ class PerformanceFragment : Fragment() {
                 binding.chart.data = setLineChartData(it)
             }
             else {
+                val toast = Toast.makeText(this.context, "No current data. NYSE has been closed for longer than this time span.", Toast.LENGTH_LONG)
+                toast.show()
                 binding.chart.data = null
             }
             binding.chart.invalidate()

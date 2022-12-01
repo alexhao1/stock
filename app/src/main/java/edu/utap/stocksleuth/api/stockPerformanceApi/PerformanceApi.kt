@@ -5,10 +5,7 @@ import com.google.gson.GsonBuilder
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer
 import com.google.gson.JsonElement
-import edu.utap.stocksleuth.api.congressApi.Congress
-import edu.utap.stocksleuth.api.stockApi.Stock
-import edu.utap.stocksleuth.api.stockApi.StockApi
-import edu.utap.stocksleuth.api.tweetApi.TweetApi
+
 import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

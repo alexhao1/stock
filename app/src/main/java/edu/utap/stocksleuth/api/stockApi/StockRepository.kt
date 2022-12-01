@@ -5,12 +5,12 @@ import android.text.SpannableString
 import com.google.gson.GsonBuilder
 import org.json.JSONObject
 import java.io.*
+import edu.utap.stocksleuth.api.congressApi.Congress
+import edu.utap.stocksleuth.api.stockApi.Stock
+import edu.utap.stocksleuth.api.tweetApi.TweetApi
 
 
-class StockRepository(private val stockApi: StockApi) {
-    val gson = GsonBuilder().registerTypeAdapter(
-        SpannableString::class.java, StockApi.SpannableDeserializer()
-    ).create()
+class StockRepository() {
 
     fun getStocks():List<Stock>{
     //        return stockApi.getStocks()
