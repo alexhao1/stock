@@ -1,7 +1,6 @@
 package edu.utap.stocksleuth.ui
 
 import android.text.SpannableString
-import android.util.Log
 import androidx.lifecycle.*
 import edu.utap.stocksleuth.api.congressApi.Congress
 import edu.utap.stocksleuth.api.congressApi.CongressApi
@@ -18,7 +17,6 @@ import edu.utap.stocksleuth.api.tweetApi.TweetRepository
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.util.*
 
 class MainViewModel: ViewModel() {
     private var title = MutableLiveData<String>()

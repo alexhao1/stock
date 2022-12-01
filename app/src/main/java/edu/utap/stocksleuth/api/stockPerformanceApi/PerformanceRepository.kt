@@ -2,7 +2,6 @@ package edu.utap.stocksleuth.api.stockPerformanceApi
 
 import android.text.SpannableString
 import com.google.gson.GsonBuilder
-import edu.utap.stocksleuth.api.congressApi.Congress
 import edu.utap.stocksleuth.api.tweetApi.TweetApi
 
 class PerformanceRepository(private val performanceApi: PerformanceApi) {
